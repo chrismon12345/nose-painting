@@ -1,64 +1,100 @@
-# Nose-Controlled Virtual Cursor
+<img width="3188" height="1202" alt="frame (3)" src="https://github.com/user-attachments/assets/517ad8e9-ad22-457d-9538-a9e62d137cd7" />
 
-Hands-free mouse cursor control using your webcam. Tracks the nose tip with facial landmarks and detects eye blinks to trigger mouse clicks.
 
-## Features
 
-- Nose tip tracking (landmark #30) with on-frame green dot visualization
-- Real-time cursor control mapped from camera to screen
-- Blink detection using Eye Aspect Ratio (EAR) on landmarks 36–41
-  - Single blink → single click
-  - Double blink (within 0.4s) → double click
-- On-screen overlays: blink status, EAR values, nose status, FPS, cursor info
-- Adjustable EAR threshold via slider
-- Pause/Resume with keyboard (P)
 
-## Requirements
+## Basic Details
+### Team Name: KINNAM
 
-- Python 3.9+ (tested on 3.13)
-- Windows/macOS/Linux desktop session
 
-Install dependencies:
+### Team Members
+- Team Lead: Chrismon P Lijo - CCE
+- Member 2: Edwin BIju - CCE
 
-```bash
+
+Project Description
+A hands-free virtual mouse cursor controlled entirely by your nose. Just look at your webcam, move your head, and blink to click — because touching a mouse is overrated.
+
+The Problem (that doesn't exist)
+In this fast-paced world, lifting your hand to control a mouse is exhausting. Why waste precious wrist energy when your face can do the job?
+
+The Solution (that nobody asked for)
+We built a webcam-powered nose tracker that follows your nostrils across the screen, paired with blink-based clicking. One blink for a click, two blinks for a double click — it’s like Morse code, but with your eyelids.
+
+Technical Details
+Technologies/Components Used
+For Software:
+
+Languages used: Python
+
+Frameworks used: None (pure OpenCV + dlib magic)
+
+Libraries used: OpenCV, dlib, pyautogui, NumPy
+
+Tools used: Webcam, Virtual Environment, Good Lighting
+
+For Hardware:
+
+Main components: Your face, a webcam, eyelids
+
+Specifications: Any standard laptop/USB webcam (2MP+ recommended)
+
+Tools required: Lighting setup, functioning eyelids, caffeine
+
+Implementation
+For Software:
+
+# Installation
+
+bash
+Copy
+Edit
 python -m venv .venv
-.venv\\Scripts\\activate  # Windows PowerShell
+.venv\Scripts\activate  # Windows PowerShell
 # source .venv/bin/activate  # macOS/Linux
 pip install -r requirements.txt
-```
+Model auto-download:
+shape_predictor_68_face_landmarks.dat will be fetched from dlib.net on first run.
+If it fails, download manually and place it in the project root.
 
-Model file (auto-download on first run):
+# Run
 
-- `shape_predictor_68_face_landmarks.dat` will be downloaded from `https://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2` and decompressed automatically if not present.
-- If auto-download fails, download manually and place the `.dat` file in the project root.
-
-## Usage
-
-```bash
+bash
+Copy
+Edit
 python main.py
-```
+Project Documentation
+# Screenshots
 
-Controls:
+![Screenshot1](img1.png)
+Green dot proudly sitting on your nose tip — the star of the show.
 
-- P: Pause/Resume cursor movement
-- Q or Esc: Quit
-- Slider (Controls window): Adjust EAR threshold (0.10–0.40)
+![Screenshot](img2.png)
+Cursor zooming across the screen, hands nowhere in sight.
 
-## Tips & Calibration
+# Diagrams
 
-- Ensure your face is well lit and fully visible to the camera.
-- Start with the default EAR threshold; adjust if false blinks or missed blinks occur.
-- If movement is jittery, lower the smoothing alpha in `main.py` (`SMOOTHING_ALPHA`). Higher values are more responsive but less smooth.
-- If cursor range feels inverted/wrong, remember the preview is mirrored; mapping uses normalized coordinates to screen space.
 
-## Notes
+Webcam → Nose landmark detection → Coordinate mapping → Cursor movement → Blinking = Clicking
 
-- `pyautogui` may require accessibility permissions on macOS; grant when prompted.
-- On Linux Wayland sessions, consider Xorg or additional permissions for global cursor control.
-- If the webcam fails to open on Windows, try changing `CAM_INDEX` in `main.py` or using DirectShow backend already selected.
 
-## License
+Project Demo
+# Video
+[(scrn1.mp4)](https://drive.google.com/file/d/128g9KeDfE96Nt7dY0zF6obDRYqnfms2r/view?usp=sharing)
+Shows nose-guided cursor navigation and blink-based clicking in real time.
 
-MIT
+
+
+Team Contributions
+Chrismon p Lijo: Lead Nose Navigator & Code Developer
+
+Edwin Biju: Test audience for blink detection
+
+---
+Made with ❤️ at TinkerHub Useless Projects 
+
+![Static Badge](https://img.shields.io/badge/TinkerHub-24?color=%23000000&link=https%3A%2F%2Fwww.tinkerhub.org%2F)
+![Static Badge](https://img.shields.io/badge/UselessProjects--25-25?link=https%3A%2F%2Fwww.tinkerhub.org%2Fevents%2FQ2Q1TQKX6Q%2FUseless%2520Projects)
+
 
 
